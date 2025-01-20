@@ -10,7 +10,7 @@ export default function NavigationBar() {
         <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <Link to={"/"}>Biodatas</Link>
+        <Link to={"/biodatas"}>Biodatas</Link>
       </li>
       <li>
         <Link to={"/dashboard"}>Dashboard</Link>
@@ -32,7 +32,7 @@ export default function NavigationBar() {
         </span>
       </Navbar.Brand>
       {/*  */}
-      {user ? (
+      {user?.photoURL ? (
         <div className="flex md:order-2">
           <Dropdown
             arrowIcon={false}
@@ -40,6 +40,7 @@ export default function NavigationBar() {
             label={
               <Avatar
                 alt="User settings"
+                // img={user?.photoURL}
                 img={user?.photoURL}
                 referrerPolicy="no-referrer"
                 rounded
@@ -58,7 +59,6 @@ export default function NavigationBar() {
             <Dropdown.Divider />
             <Dropdown.Item onClick={logOut}>Sign out</Dropdown.Item>
           </Dropdown>
-          <Navbar.Toggle />
         </div>
       ) : (
         <div className="flex md:order-2 gap-2">

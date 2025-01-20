@@ -8,15 +8,15 @@ export default function DashboardLayout() {
       <div className="bg-orange-500 w-64 min-h-screen">
         <ul className="p-4 space-y-4">
               <li>
-                <NavLink to="/dashboard/userHome" className={'flex gap-2 items-center p-3 hover:bg-slate-200'}>
+                <NavLink to="/" className={'flex gap-2 items-center p-3 hover:bg-slate-200'}>
                   <FaHome></FaHome>
                   User Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/paymentHistory" className={'flex gap-2 items-center'}>
+                <NavLink to="/dashboard/edit-biodata" className={'flex gap-2 items-center'}>
                   <FaCalendar></FaCalendar>
-                  Payment History
+                  Edit Biodata
                 </NavLink>
               </li>
               <li>
