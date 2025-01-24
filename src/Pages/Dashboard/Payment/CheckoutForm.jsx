@@ -75,9 +75,6 @@ export default function CheckoutForm() {
         };
         const res = await axiosSecure.post("/contact-request", payment);
         console.log("payment saved", res);
-        // if (res?.data?.data?.message === "you already add this") {
-        //   toast.error("you already request for this");
-        // }
         toast.success('you payment successfull');
       }
     }
