@@ -1,9 +1,11 @@
-import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useAdmin from "../../Hooks/useAdmin";
 
 export default function NavigationBar() {
   const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
+  
   const links = (
     <>
       <li>
@@ -12,9 +14,16 @@ export default function NavigationBar() {
       <li>
         <Link to={"/biodatas"}>Biodatas</Link>
       </li>
-      <li>
-        <Link to={"/dashboard"}>Dashboard</Link>
-      </li>
+      {user && isAdmin && (
+        <li>
+          <Link to={"/dashboard/adminDashboard"}>Dashboard</Link>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li>
+          <Link to={"/dashboard/edit-biodata"}>Dashboard</Link>
+        </li>
+      )}
       <li>
         <Link to={"/"}>About Us</Link>
       </li>
@@ -24,57 +33,110 @@ export default function NavigationBar() {
     </>
   );
   return (
-    <Navbar fluid rounded>
-      <Navbar.Brand>
-        <Navbar.Toggle />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+    <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 shadow">
+      <div className="navbar-start max-md:w-1/4">
+        <a
+          className="link text-base-content link-neutral text-xl font-semibold no-underline"
+          href="#"
+        >
           PairUp
-        </span>
-      </Navbar.Brand>
-      {/*  */}
-      {user?.photoURL ? (
-        <div className="flex md:order-2">
-          <Dropdown
-            arrowIcon={false}
-            inline
-            label={
-              <Avatar
-                alt="User settings"
-                // img={user?.photoURL}
-                img={user?.photoURL}
-                referrerPolicy="no-referrer"
-                rounded
-              />
-            }
+        </a>
+      </div>
+      <div className="navbar-center max-md:hidden">
+        <ul className="menu menu-horizontal p-0 font-medium">{links}</ul>
+      </div>
+      <div className="navbar-end items-center gap-4">
+        <div className="dropdown relative inline-flex md:hidden rtl:[--placement:bottom-end]">
+          <button
+            id="dropdown-default"
+            type="button"
+            className="dropdown-toggle btn btn-text btn-secondary btn-square"
+            aria-haspopup="menu"
+            aria-expanded="false"
+            aria-label="Dropdown"
           >
-            <Dropdown.Header>
-              <span className="block text-sm">{user?.displayName}</span>
-              <span className="block truncate text-sm font-medium">
-                {user?.email}
-              </span>
-            </Dropdown.Header>
-            {/* <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Settings</Dropdown.Item>
-            <Dropdown.Item>Earnings</Dropdown.Item> */}
-            <Dropdown.Divider />
-            <Dropdown.Item onClick={logOut}>Sign out</Dropdown.Item>
-          </Dropdown>
+            <span className="icon-[tabler--menu-2] dropdown-open:hidden size-5"></span>
+            <span className="icon-[tabler--x] dropdown-open:block hidden size-5"></span>
+          </button>
+          <ul
+            className="dropdown-menu dropdown-open:opacity-100 hidden min-w-60 space-y-2"
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="dropdown-default"
+          >
+            {links}
+          </ul>
         </div>
-      ) : (
-        <div className="flex md:order-2 gap-2">
-          <Link to={"/signup"}>
-            <Button>SignUp</Button>
-          </Link>
-          <Link to={"/login"}>
-            <Button>login</Button>
-          </Link>
-        </div>
-      )}
 
-      <Navbar.Collapse>
-        {links}
-        {/* <Link><Navbar.Link href="#">Contact</Navbar.Link></Link> */}
-      </Navbar.Collapse>
-    </Navbar>
+        {user ? (
+          <div className="flex items-center gap-2">
+            <div className="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
+              <button
+                id="dropdown-scrollable"
+                type="button"
+                className="dropdown-toggle flex items-center"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-label="Dropdown"
+              >
+                <div className="avatar">
+                  <div className="size-9.5 rounded-full">
+                    {user && <img src={`${user?.photoURL}`} referrerPolicy="no-referrer" alt="avatar 1" />}
+                  </div>
+                </div>
+              </button>
+              <ul
+                className="dropdown-menu dropdown-open:opacity-100 hidden min-w-60 z-30"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="dropdown-avatar"
+              >
+                <li className="dropdown-header gap-2">
+                  <div className="avatar">
+                    <div className="w-10 rounded-full">
+                      {user && (
+                        <img
+                          src={user?.photoURL}
+                          referrerPolicy="no-referrer"
+                          alt="avatar"
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <h6 className="text-base-content text-base font-semibold">
+                      {user?.displayName}
+                    </h6>
+                  </div>
+                </li>
+                <li className="gap-2">
+                  <a
+                    onClick={logOut}
+                    className="btn btn-error btn-soft btn-block"
+                    href="#"
+                  >
+                    <span className="icon-[tabler--logout]"></span>
+                    Sign out
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <button onClick={logOut} className="btn">logout</button>
+          </div>
+        ) : (
+          <div className="flex md:order-2 gap-2">
+            <Link to={"/signup"}>
+              <button className="btn btn-accent">SignUp</button>
+            </Link>
+            <Link to={"/login"}>
+              <button className="btn btn-accent">login</button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </nav>
+
+
+
   );
 }

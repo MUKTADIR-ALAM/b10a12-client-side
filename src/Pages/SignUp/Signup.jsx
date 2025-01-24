@@ -14,7 +14,7 @@ export default function Signup() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const hadleGoogleSignin = () => {
+  const hadleGoogleSignin = async() => {
     googleSignin()
       .then((result) => {
         console.log(result);

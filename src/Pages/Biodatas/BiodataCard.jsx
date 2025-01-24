@@ -1,19 +1,17 @@
-import { Card } from "flowbite-react";
+// import { Card } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 export default function BiodataCard({ biodata }) {
-  console.log(biodata);
   const {
     _id,
     biodataType,
     name,
     photoURL,
     occupation,
-    presentDivision,
+    permanentDivision,
     age,
     BiodataId,
   } = biodata || {};
-  console.log(BiodataId);
   return (
     
     <div className="bg-gray-300 hover:bg-gray-900 hover:text-white transition duration-300 max-w-xs rounded overflow-hidden shadow-lg">
@@ -32,14 +30,14 @@ export default function BiodataCard({ biodata }) {
           </h4>
         </a>
         <p className="mb-2 text-sm text-gray-600">
-          Permanent Division : {presentDivision}
+          Permanent Division : {permanentDivision}
         </p>
         <p>Age: {age} years</p>
         <p>Occupation: {occupation}</p>
         <div className="my-5">
           <Link
             to={`/biodataDetails/${_id}`}
-            className=" rounded-md p-3 bg-slate-600"
+            className="text-white rounded-md p-3 bg-slate-600"
           >
             View profile
           </Link>

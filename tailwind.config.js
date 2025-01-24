@@ -1,9 +1,12 @@
-const flowbite = require("flowbite-react/tailwind");
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", flowbite.content()],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}",'./node_modules/flyonui/dist/js/*.js','./node_modules/flyonui/dist/js/accordion.js',],
   theme: {
     extend: {},
   },
-  plugins: [flowbite.plugin()],
+  plugins: [
+    require('flyonui'),
+    require('flyonui/plugin')
+  ],
 };

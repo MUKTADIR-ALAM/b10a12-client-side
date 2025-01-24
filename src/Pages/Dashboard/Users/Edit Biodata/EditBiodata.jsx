@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { FaUtensils } from "react-icons/fa";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAuth from "../../../../Hooks/useAuth";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { differenceInYears } from "date-fns";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function EditBiodata() {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
@@ -64,15 +67,23 @@ export default function EditBiodata() {
     data.birthDate = startDate;
     const age = differenceInYears(new Date(), data.birthDate);
     data.age = age;
-    axiosSecure.post('/biodata',data)
-    .then((res)=>{
-      console.log(res);
-    })
+    axiosSecure.post("/biodata", data).then((res) => {
+      console.log(res?.data?.insertedId);
+      if (res?.data?.insertedId) {
+        toast.success("biodata created successfully");
+        navigate("/dashboard/viewBiodata");
+      }
+      if(res?.data?.modifiedCount){
+        toast.success('your data updated successfully');
+        navigate('/dashboard/viewBiodata');
+      }
+    });
   };
 
   return (
     <div>
       {/* from div start */}
+      <div className="text-center font-bold text-xl mb-8">----- Save or Update your Biodata -----</div>
 
       <div>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -126,9 +137,9 @@ export default function EditBiodata() {
           </div>
 
           {/* self height weight and dateofbirth occupation skin color */}
-          <div className="flex gap-2 justify-between">
+          <div className="flex gap-2 justify-between items-center">
             {/* height  */}
-            <label className="">
+            <label className="w-full">
               <div className="label">
                 <span className="label-text">height</span>
               </div>
@@ -144,7 +155,7 @@ export default function EditBiodata() {
               </select>
             </label>
 
-            <label className="">
+            <label className="w-full">
               <div className="label">
                 <span className="label-text">weight</span>
               </div>
@@ -153,18 +164,18 @@ export default function EditBiodata() {
                 defaultValue={"select"}
                 className="select select-bordered w-full"
               >
-                <option disabled value={"46-50"}>
+                {/* <option disabled value={"46-50"}>
                   select
-                </option>
+                </option> */}
                 {weightOptions}
               </select>
             </label>
 
-            <label className="">
+            <label className="w-full h-fit">
               <div className="label">
                 <span className="label-text">Date of birth + Age</span>
               </div>
-              <div className="w-full">
+              <div className="w-full  border p-2 rounded-lg">
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
@@ -172,7 +183,7 @@ export default function EditBiodata() {
               </div>
             </label>
 
-            <label className="">
+            <label className="w-full">
               <div className="label">
                 <span className="label-text">Occupation</span>
               </div>
@@ -182,7 +193,7 @@ export default function EditBiodata() {
                 className="select select-bordered w-full"
               >
                 <option disabled value={"select"}>
-                select
+                  select
                 </option>
                 <option value={"job"}>Job</option>
                 <option value={"businessman"}>Businessman</option>
@@ -190,7 +201,7 @@ export default function EditBiodata() {
               </select>
             </label>
             {/* skin color */}
-            <label className="">
+            <label className="w-full">
               <div className="label">
                 <span className="label-text">Race (skin color)</span>
               </div>
@@ -256,7 +267,6 @@ export default function EditBiodata() {
             </label>
           </div>
 
-          
           {/* father and mothers name */}
           <div className="flex gap-4">
             <label className="w-full">
@@ -329,10 +339,10 @@ export default function EditBiodata() {
               </div>
               <input
                 type="number"
-                {...register("partner-age", { required: true })}
-                min={5}
-                max={100}
-                placeholder="Input your age"
+                {...register("partnerAge", { required: true })}
+                min={18}
+                max={80}
+                placeholder="Input your age between (18 to 80)"
                 className="input input-bordered w-full"
               />
             </label>
@@ -361,7 +371,7 @@ export default function EditBiodata() {
               <input
                 type="number"
                 required
-                {...register("phone-number", { required: true })}
+                {...register("phoneNumber", { required: true })}
                 placeholder="Type your phone number"
                 className="input input-bordered w-full"
               />

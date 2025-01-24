@@ -13,7 +13,7 @@ export default function Login() {
   const location = useLocation();
   const axiosPublic = useAxiosPublic();
 
-  const hadleGoogleSignin = () => {
+  const hadleGoogleSignin = async () => {
     googleSignin()
       .then((result) => {
         console.log(result);
@@ -24,7 +24,7 @@ export default function Login() {
         };
         axiosPublic.post("/users", userInfoDb);
         //   save user in db end
-        console.log(location)
+        console.log(location);
         navigate(location?.state ? location?.state?.from?.pathname : "/");
         toast.success("Successfully loggen in!");
       })
@@ -32,6 +32,7 @@ export default function Login() {
         setErrorMessage(error.message);
         toast.error(error.message);
       });
+
   };
 
   //
