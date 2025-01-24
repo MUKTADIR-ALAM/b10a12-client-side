@@ -16,7 +16,7 @@ export default function Login() {
   const hadleGoogleSignin = async () => {
     googleSignin()
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         //   save user in db
         const userInfoDb = {
           name: result.user.displayName,
@@ -24,9 +24,9 @@ export default function Login() {
         };
         axiosPublic.post("/users", userInfoDb);
         //   save user in db end
-        console.log(location);
+        // console.log(location);
         navigate(location?.state ? location?.state?.from?.pathname : "/");
-        toast.success("Successfully loggen in!");
+        toast.success("Successfully logged in");
       })
       .catch((error) => {
         setErrorMessage(error.message);
@@ -45,11 +45,12 @@ export default function Login() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     signIn(data.email, data.password)
       .then((res) => {
         navigate(location?.state ? location?.state : "/");
+        toast.success('Successfully logged in')
       })
       .catch((err) => {
         setErrorMessage(err.message);

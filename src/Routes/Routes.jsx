@@ -15,6 +15,7 @@ import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard/AdminDashboa
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ApprovedPremium from "../Pages/Dashboard/Admin/ApprovedPremium/ApprovedPremium";
 import ApprovedContactRequest from "../Pages/Dashboard/Admin/ApprovedContactRequest/ApprovedContactRequest";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 export const Routes = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ export const Routes = createBrowserRouter([
       {
         path: "biodataDetails/:id",
         element: <BiodataDetails />,
+      },
+      {
+        path:'payment/:id',
+        element:<Payment/>
       },
     ],
   },

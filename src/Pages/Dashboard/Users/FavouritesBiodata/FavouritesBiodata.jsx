@@ -45,7 +45,6 @@ export default function FavouritesBiodata() {
     });
   };
 
-  console.log(favoritesList);
 
   return (
     <div>

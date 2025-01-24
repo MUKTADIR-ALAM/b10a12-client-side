@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
@@ -10,10 +10,19 @@ export default function BiodataDetails() {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
+
+  const { isPending: isSelfLoading, data: selfInfo = {} } = useQuery({
+    queryKey: ["selfInfo", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/selfUser/${user?.email}`);
+      return res.data;
+    },
+  });
+
   const { isPending, data: details = {} } = useQuery({
     queryKey: ["biodataDetails"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`biodataDetails/${id}`);
+      const res = await axiosSecure.get(`/biodataDetails/${id}`);
       return res.data;
     },
   });
@@ -42,11 +51,6 @@ export default function BiodataDetails() {
   } = details || {};
 
   const handleAddtoFavorite = async () => {
-    // Name
-    // Biodata Id
-    // Permanent Address
-    // Occupation
-    // Delete Button
     const favBioInfo = {
       ownerEmail: user?.email,
       name,
@@ -55,21 +59,16 @@ export default function BiodataDetails() {
       occupation,
     };
 
-
-      const { data } = await axiosSecure.post(
-        "/saveFavoriteBiodata",
-        favBioInfo
-      );
-      if (data?.insertedId) {
-        toast.success("successfully added to favorite");
-      }
-      if (data?.message === "you already add this") {
-        toast.error("you already add this biodata");
-      }
-    
+    const { data } = await axiosSecure.post("/saveFavoriteBiodata", favBioInfo);
+    if (data?.insertedId) {
+      toast.success("successfully added to favorite");
+    }
+    if (data?.message === "you already add this") {
+      toast.error("you already add this biodata");
+    }
   };
 
-  if (isPending) {
+  if (isPending || isSelfLoading) {
     return <LoadingSpinner />;
   }
   return (
@@ -150,13 +149,16 @@ export default function BiodataDetails() {
         </div>
 
         <div className="py-2 px-4 border-2 border-slate-300 rounded-md">
-          <div className="text-2xl font-bold my-4">Contact Infromation</div>
-          <p className="text-xl">
-            <span className="font-semibold">Email : </span> {email}
-          </p>
-          <p className="text-xl">
-            <span className="font-semibold">Phone Number : </span> {phoneNumber}
-          </p>
+          <div className="text-2xl font-bold my-4">Contact Infromation </div>
+          {selfInfo?.status === 'premium' ? <div>
+            <p className="text-xl">
+              <span className="font-semibold">Email : </span> {email}
+            </p>
+            <p className="text-xl">
+              <span className="font-semibold">Phone Number : </span>{" "}
+              {phoneNumber}
+            </p>
+          </div>: <Link to={`/payment/${_id}`}><button className="btn">Request Contact Information</button></Link>}
         </div>
       </div>
     </div>
