@@ -11,17 +11,20 @@ export default function BiodataCard({ biodata }) {
     permanentDivision,
     age,
     BiodataId,
+    status
   } = biodata || {};
   return (
-    
     <div className="bg-gray-300 hover:bg-gray-900 hover:text-white transition duration-300 max-w-xs rounded overflow-hidden shadow-lg">
       <div className="py-4 px-8">
         <div>
-          <img
-            src={photoURL}
-            alt="Author"
-            className="rounded-full h-12 w-12 mb-4"
-          />
+          <div className="flex justify-between items-center">
+            <img
+              src={photoURL}
+              alt="Author"
+              className="rounded-full h-12 w-12 mb-4"
+            />
+            {status==='premium' && <div><span className="badge badge-soft badge-success text-xs">premium</span></div>}
+          </div>
           <p>Biodata ID : {BiodataId}</p>
         </div>
         <a href="#">

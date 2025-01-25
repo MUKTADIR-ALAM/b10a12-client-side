@@ -40,7 +40,7 @@ export const Routes = createBrowserRouter([
       },
       {
         path: "biodataDetails/:id",
-        element: <BiodataDetails />,
+        element: <PrivateRoute><BiodataDetails /></PrivateRoute>,
       },
       {
         path:'payment/:id',
