@@ -113,6 +113,9 @@ export default function ViewBiodata() {
           <div className="mt-4">
             <p className="text-2xl font-bold mb-2">Basic Information</p>
             <p>
+              <span className="font-bold">BiodataId:</span> {_id}
+            </p>
+            <p>
               <span className="font-bold">Name:</span> {name}
             </p>
             <p>

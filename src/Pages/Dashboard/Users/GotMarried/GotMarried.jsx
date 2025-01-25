@@ -1,17 +1,37 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import useAuth from "../../../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 export default function GotMarried() {
   const { register, handleSubmit, reset } = useForm();
+  const {user} = useAuth();
 
-  
+  const axiosSecure = useAxiosSecure();
+
+  const onSubmit = async (data) => {
+    data.marrigeDate = new Date();
+    data.selfEmail = user?.email;
+    // console.log(data);
+
+    const res = await axiosSecure.post('/successStory',data);
+    // console.log(res.data);
+    if(res.data.insertedId){
+        toast.success('you review added successfully');
+    }
+    if(res.data.message === 'you already add this') {
+        toast.error('you already add your success story');
+    }
+    // reset();
+
+  };
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* your and your partner biodata id */}
-        <div className="flex gap-6">
+        <div className="lg:flex gap-6">
           <label className="w-full">
             <div className="label">
               <span className="label-text">Self Biodata id</span>
@@ -37,7 +57,7 @@ export default function GotMarried() {
         </div>
 
         {/* image and review */}
-        <div className="flex gap-6">
+        <div className="lg:flex gap-6">
           <label className="w-full">
             <div className="label">
               <span className="label-text">Couple Image Link</span>
