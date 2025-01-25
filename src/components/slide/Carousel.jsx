@@ -30,20 +30,20 @@ export default function Carousel() {
       >
         <SwiperSlide>
           <Slide
-            image={'https://images.pexels.com/photos/1571939/pexels-photo-1571939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-            text='Where every step counts, and every event is just a click away.'
+            image={'https://images.pexels.com/photos/1456613/pexels-photo-1456613.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
+            text='Your Perfect Match Awaits.'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
-            image={'https://images.pexels.com/photos/2002209/pexels-photo-2002209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-            text='Run the distance, manage the event, and connect the community—your marathon journey'
+            image={'https://images.pexels.com/photos/758898/pexels-photo-758898.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
+            text='Love Begins Here, Forever Stays Strong.'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Slide
-            image={'https://images.pexels.com/photos/2654902/pexels-photo-2654902.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
-            text='Empowering marathon organizers and participants to go the extra mile with ease.'
+            image={'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'}
+            text='Where True Hearts Find Their Match.'
           />
         </SwiperSlide>
       </Swiper>
