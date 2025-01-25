@@ -12,6 +12,7 @@ import { IoIosContacts } from "react-icons/io";
 import { NavLink, Outlet } from "react-router-dom";
 import { AiFillLike } from "react-icons/ai";
 import useAdmin from "../Hooks/useAdmin";
+import { GiLovers } from "react-icons/gi"; 
 
 export default function DashboardLayout() {
 
@@ -61,11 +62,11 @@ export default function DashboardLayout() {
 
       <li>
         <NavLink to="/dashboard/gotMarried" className={({ isActive }) => isActive ? 'flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg bg-slate-200' : 'flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg'}>
-        <AiFillLike />
+        <GiLovers />
         Got Married
         </NavLink>
       </li>
-      
+
       <li>
         <NavLink to="/" className={"flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg"}>
         <TbLogout2 />
