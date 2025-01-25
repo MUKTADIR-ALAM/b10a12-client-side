@@ -1,13 +1,10 @@
 import React from "react";
-import LoadingSpinner from "../../../../Shared/LoadingSpinner/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-
-
-export default function UserContactReqTable({ item,refetch }) {
+export default function UserContactReqTable({ item, refetch }) {
   const { biodataId, status, _id } = item;
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
@@ -31,15 +28,13 @@ export default function UserContactReqTable({ item,refetch }) {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        
         const { data } = await axiosSecure.delete(`/delContactRequest/${id}`);
-        console.log(data);
-        if(data.deletedCount){
+        if (data.deletedCount) {
           Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success",
+          });
         }
         refetch();
       }
