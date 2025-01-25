@@ -27,6 +27,7 @@ export default function BiodataDetails() {
       return res.data;
     },
   });
+  
 
   const {
     _id,

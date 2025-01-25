@@ -18,6 +18,7 @@ import ApprovedContactRequest from "../Pages/Dashboard/Admin/ApprovedContactRequ
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import GotMarried from "../Pages/Dashboard/Users/GotMarried/GotMarried";
+import AdminRoute from "./AdminRoute";
 
 export const Routes = createBrowserRouter([
   {
@@ -43,11 +44,15 @@ export const Routes = createBrowserRouter([
       },
       {
         path: "biodataDetails/:id",
-        element: <PrivateRoute><BiodataDetails /></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <BiodataDetails />
+          </PrivateRoute>
+        ),
       },
       {
-        path:'payment/:id',
-        element:<Payment/>
+        path: "payment/:id",
+        element: <Payment />,
       },
     ],
   },
@@ -59,7 +64,7 @@ export const Routes = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-        // users
+      // users
       {
         path: "edit-biodata",
         element: <EditBiodata />,
@@ -80,23 +85,39 @@ export const Routes = createBrowserRouter([
         path: "gotMarried",
         element: <GotMarried />,
       },
-        //  admin
+      //  admin
 
       {
-        path: 'adminDashboard',
-        element: <AdminDashboard/>
+        path: "adminDashboard",
+        element: (
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        ),
       },
       {
-        path: 'manageUsers',
-        element: <ManageUsers/>
+        path: "manageUsers",
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
-        path: 'approvedPremium',
-        element: <ApprovedPremium/>
+        path: "approvedPremium",
+        element: (
+          <AdminRoute>
+            <ApprovedPremium />
+          </AdminRoute>
+        ),
       },
       {
-        path: 'approvedContactRequest',
-        element: <ApprovedContactRequest/>
+        path: "approvedContactRequest",
+        element: (
+          <AdminRoute>
+            <ApprovedContactRequest />
+          </AdminRoute>
+        ),
       },
     ],
   },

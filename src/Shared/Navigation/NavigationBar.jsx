@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
+import { IoHeartHalfOutline } from "react-icons/io5";
+
 
 export default function NavigationBar() {
   const { user, logOut } = useAuth();
@@ -25,10 +27,10 @@ export default function NavigationBar() {
         </li>
       )}
       <li>
-        <Link to={"/"}>About Us</Link>
+        <a href="#footer">About Us</a>
       </li>
       <li>
-        <Link to={"/"}>Contact Us</Link>
+        <a href="#footer">Contact Us</a>
       </li>
     </>
   );
@@ -36,10 +38,10 @@ export default function NavigationBar() {
     <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 shadow">
       <div className="navbar-start max-md:w-1/4">
         <a
-          className="link text-base-content link-neutral text-xl font-semibold no-underline"
+          className="flex items-center link text-base-content link-neutral text-xl font-semibold no-underline"
           
         >
-          PairUp
+         <IoHeartHalfOutline size={40} /> PairUp
         </a>
       </div>
       <div className="navbar-center max-md:hidden">

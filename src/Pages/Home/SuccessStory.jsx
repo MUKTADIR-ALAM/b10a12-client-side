@@ -14,7 +14,6 @@ export default function SuccessStory() {
       return data;
     },
   });
-  console.log(successStory);
 
   if (isLoading) {
     return <LoadingSpinner />;
