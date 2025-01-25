@@ -5,6 +5,7 @@ import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { format } from 'date-fns';
 
 export default function BiodataDetails() {
   const { user } = useAuth();
@@ -50,6 +51,8 @@ export default function BiodataDetails() {
     selfWeight,
   } = details || {};
 
+  // const formattedDate = format(new Date(birthDate), 'yyyy-MM-dd'); 
+
   const handleAddtoFavorite = async () => {
     const favBioInfo = {
       ownerEmail: user?.email,
@@ -85,7 +88,7 @@ export default function BiodataDetails() {
             <span className="font-bold">Age :</span> {age} years
           </p>
           <p className="text-xl">
-            <span className="font-bold">Birthdate :</span> {birthDate}
+            <span className="font-bold">Birthdate :</span> {birthDate && format(new Date(birthDate), 'yyyy-MM-dd')}
           </p>
           <p className="text-xl">
             <span className="font-bold">Gender :</span> {biodataType}

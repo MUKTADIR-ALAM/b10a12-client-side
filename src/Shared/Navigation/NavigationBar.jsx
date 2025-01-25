@@ -37,7 +37,7 @@ export default function NavigationBar() {
       <div className="navbar-start max-md:w-1/4">
         <a
           className="link text-base-content link-neutral text-xl font-semibold no-underline"
-          href="#"
+          
         >
           PairUp
         </a>
