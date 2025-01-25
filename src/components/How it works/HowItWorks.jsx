@@ -51,11 +51,10 @@ export default function HowItWorks() {
                   </div>
                   <div className="max-w-xs">
                     <h3 className="mb-2 text-lg font-bold text-gray-700 dark:text-gray-300">
-                      Personalize Your Experience
+                      Publish your Biodata
                     </h3>
                     <p className="text-lg text-gray-500 dark:text-gray-400">
-                      Tailor tools and settings to fit your needs and
-                      preferences.
+                      For matching with your dream pusblish your biodata that can help other to see your status
                     </p>
                   </div>
                 </li>
@@ -67,11 +66,10 @@ export default function HowItWorks() {
                   </div>
                   <div className="max-w-xs">
                     <h3 className="mb-2 text-lg font-bold text-gray-700 dark:text-gray-300">
-                      Collaborate with Your Team
+                      Conenct with others by contact Request
                     </h3>
                     <p className="text-lg text-gray-500 dark:text-gray-400">
-                      Seamlessly work together, sharing insights and tools for
-                      better productivity.
+                      In our website the is a feature that you can get contact information by sending contact request
                     </p>
                   </div>
                 </li>
