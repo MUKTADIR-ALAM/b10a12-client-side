@@ -89,7 +89,7 @@ export default function Signup() {
     });
   };
   return (
-    <div className="form-container">
+    <div className="form-container mx-auto my-3">
       <p className="title">Register your account</p>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <input

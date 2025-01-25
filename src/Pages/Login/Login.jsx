@@ -59,7 +59,7 @@ export default function Login() {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container mx-auto my-4">
       <p className="title">Welcome back</p>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <input

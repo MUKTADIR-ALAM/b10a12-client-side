@@ -94,7 +94,7 @@ export default function DashboardLayout() {
           className={({ isActive }) => isActive ? 'flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg bg-slate-200' : 'flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg'}
         >
           <MdOutlineWorkspacePremium />
-          Approved Premium
+          Approved Biodata Premium
         </NavLink>
       </li>
       <li>
