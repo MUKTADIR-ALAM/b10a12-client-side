@@ -4,7 +4,15 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 export default function SuccessStory() {
-  
+  const axiosPublic = useAxiosPublic();
+  const { data: successStory, isLoading } = useQuery({
+    queryKey: ["successStory"],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get("/getSuccessStory");
+      return data;
+    },
+  });
+  console.log(successStory);
 
   if (isLoading) {
     return <LoadingSpinner />;
