@@ -2,8 +2,25 @@ import React from "react";
 import { FaFemale, FaMale } from "react-icons/fa";
 import { MdWorkspacePremium } from "react-icons/md";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 export default function SuccessCounter() {
+
+
+  const axiosSecure = useAxiosPublic();
+  const { data: adiminStat, isLoading } = useQuery({
+    queryKey: ["statsData"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get("/admin-stats");
+      return data;
+    },
+  });
+
+  const { totalBiodata, maleBiodataCount, femaleBiodataCount,permiumBiodataCount,successMarriedCount } = adiminStat || {};
+
+
+
   return (
     <div className="mx-auto w-full my-8">
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 border-2">
@@ -15,7 +32,7 @@ export default function SuccessCounter() {
           </div>
           <div>
             <div className="stat-title">Total biodata</div>
-            <div className="stat-value">32</div>
+            <div className="stat-value">{totalBiodata}</div>
           </div>
           {/* <div className="stat-desc">5% ↗︎ than last week</div> */}
         </div>
@@ -25,8 +42,8 @@ export default function SuccessCounter() {
             <span className="icon-[tabler--users-group] size-8"></span>
           </div>
           <div>
-            <div className="stat-title">Total biodata</div>
-            <div className="stat-value">32</div>
+            <div className="stat-title">Male Biodata</div>
+            <div className="stat-value">{maleBiodataCount}</div>
           </div>
           {/* <div className="stat-desc">5% ↗︎ than last week</div> */}
         </div>
@@ -37,8 +54,8 @@ export default function SuccessCounter() {
             <span className="icon-[tabler--users-group] size-8"></span>
           </div>
           <div>
-            <div className="stat-title">Total biodata</div>
-            <div className="stat-value">32</div>
+            <div className="stat-title">Female biodata</div>
+            <div className="stat-value">{femaleBiodataCount}</div>
           </div>
           {/* <div className="stat-desc">5% ↗︎ than last week</div> */}
         </div>
@@ -49,8 +66,8 @@ export default function SuccessCounter() {
             <span className="icon-[tabler--users-group] size-8"></span>
           </div>
           <div>
-            <div className="stat-title">Total biodata</div>
-            <div className="stat-value">32</div>
+            <div className="stat-title">Complete Marrige</div>
+            <div className="stat-value">{successMarriedCount}</div>
           </div>
           {/* <div className="stat-desc">5% ↗︎ than last week</div> */}
         </div>

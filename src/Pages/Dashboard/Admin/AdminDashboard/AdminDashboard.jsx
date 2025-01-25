@@ -18,7 +18,7 @@ export default function AdminDashboard() {
   });
 
   const { users, maleBiodataCount, femaleBiodataCount,permiumBiodataCount,revenue } = adiminStat || {};
-  console.log(permiumBiodataCount,revenue);
+  // console.log(permiumBiodataCount,revenue);
   if (isLoading) {
     return <LoadingSpinner />;
   }
