@@ -79,7 +79,8 @@ export default function ManageUsers() {
     return <LoadingSpinner />;
   }
   return (
-    <div className="border-base-content/25 w-full overflow-x-auto border">
+    <div>
+      <div className="border-base-content/25 w-full overflow-x-auto border">
       <table className="table">
         <thead>
           <tr>
@@ -145,6 +146,7 @@ export default function ManageUsers() {
           })}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }

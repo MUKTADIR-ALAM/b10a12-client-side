@@ -58,6 +58,14 @@ export default function DashboardLayout() {
         Favourites Biodata
         </NavLink>
       </li>
+
+      <li>
+        <NavLink to="/dashboard/gotMarried" className={({ isActive }) => isActive ? 'flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg bg-slate-200' : 'flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg'}>
+        <AiFillLike />
+        Got Married
+        </NavLink>
+      </li>
+      
       <li>
         <NavLink to="/" className={"flex gap-2 items-center p-2 hover:bg-slate-200 rounded-lg"}>
         <TbLogout2 />

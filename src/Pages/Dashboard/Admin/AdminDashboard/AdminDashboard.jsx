@@ -24,8 +24,9 @@ export default function AdminDashboard() {
   }
   return (
     <div>
-      <div className="stats">
-        <div className="stat">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+
+        <div className="stat border-2">
           <div className="stat-figure text-base-content size-4">
           <span className="icon-[tabler--users-group] size-8"></span>
           </div>
@@ -34,7 +35,7 @@ export default function AdminDashboard() {
           {/* <div className="stat-desc">5% ↗︎ than last week</div> */}
         </div>
 
-        <div className="stat">
+        <div className="stat border-2">
           <div className="stat-figure text-base-content size-4">
             {/* <span className="icon-[tabler--users-group] size-8"></span> */}
             <FaMale size={30} />
@@ -45,7 +46,7 @@ export default function AdminDashboard() {
         </div>
 
 
-        <div className="stat">
+        <div className="stat border-2">
           <div className="stat-figure text-base-content size-4">
             {/* <span className="icon-[tabler--users-group] size-8"></span> */}
             <FaFemale size={30} />
@@ -56,7 +57,7 @@ export default function AdminDashboard() {
         </div>
 
 
-        <div className="stat">
+        <div className="stat border-2">
           <div className="stat-figure text-base-content size-4">
             {/* <span className="icon-[tabler--users-group] size-8"></span> */}
             <MdWorkspacePremium size={30} />
@@ -67,7 +68,7 @@ export default function AdminDashboard() {
         </div>
 
 
-        <div className="stat">
+        <div className="stat border-2">
           <div className="stat-figure text-base-content size-4">
             {/* <span className="icon-[tabler--users-group] size-8"></span> */}
             <RiMoneyDollarCircleFill size={30} />

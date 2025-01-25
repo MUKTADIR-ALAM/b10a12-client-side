@@ -16,11 +16,14 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ApprovedPremium from "../Pages/Dashboard/Admin/ApprovedPremium/ApprovedPremium";
 import ApprovedContactRequest from "../Pages/Dashboard/Admin/ApprovedContactRequest/ApprovedContactRequest";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import ErrorPage from "../Pages/Error/ErrorPage";
+import GotMarried from "../Pages/Dashboard/Users/GotMarried/GotMarried";
 
 export const Routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -72,6 +75,10 @@ export const Routes = createBrowserRouter([
       {
         path: "favouritesBiodata",
         element: <FavouritesBiodata />,
+      },
+      {
+        path: "gotMarried",
+        element: <GotMarried />,
       },
         //  admin
 
