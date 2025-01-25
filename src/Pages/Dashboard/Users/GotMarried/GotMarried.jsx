@@ -83,6 +83,26 @@ export default function GotMarried() {
           </label>
         </div>
 
+
+        {/* image and review */}
+        <div className="lg:flex gap-6">
+
+          <label className="w-full">
+            <div className="label">
+              <span className="label-text">Rating</span>
+            </div>
+            <input
+              type="number"
+              {...register("rating", { required: true })}
+              placeholder="Rating (1 to 5)"
+              className="input input-bordered w-full"
+              min={1}
+              max={5}
+              s
+            />
+          </label>
+        </div>
+
         <button className="flex items-center bg-slate-400 p-3 rounded-lg">
           submit
         </button>
