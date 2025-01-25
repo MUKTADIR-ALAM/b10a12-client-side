@@ -19,7 +19,6 @@ export default function ContactRequest() {
       return data;
     },
   });
-  console.log(contactRequest);
 
   return (
     <div>
@@ -40,22 +39,10 @@ export default function ContactRequest() {
             </tr>
           </thead>
           <tbody>
-            {/* <tr>
-              <td className="text-nowrap">John Doe</td>
-              <td>johndoe@example.com</td>
-              <td>
-                <span className="badge badge-soft badge-success text-xs">
-                  Professional
-                </span>
-              </td>
-              <td className="text-nowrap">March 1, 2024</td>
-              <td>hello</td>
-              <td>hello</td>
-            </tr> */}
 
             {contactRequest.map((item) => {
               return (
-                <UserContactReqTable key={item?._id} item={item}/>
+                <UserContactReqTable key={item?._id} item={item} refetch={refetch}/>
               );  
             })}
           </tbody>

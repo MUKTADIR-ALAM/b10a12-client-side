@@ -1,19 +1,49 @@
 import React from "react";
+import LoadingSpinner from "../../../../Shared/LoadingSpinner/LoadingSpinner";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
-export default function UserContactReqTable({item}) {
-    const {_id,biodataId,email,name}  = item; 
+
+
+export default function UserContactReqTable({ item,refetch }) {
+  const { biodataId, status, _id } = item;
+  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
+
+  const { data: bioData = {}, isPending } = useQuery({
+    queryKey: ["bioData", biodataId],
+    queryFn: async () => {
+      const { data } = await axiosPublic.get(`/biodataDetails/${biodataId}`);
+      return data;
+    },
+  });
+
+  
+
+  if (isPending) {
+    return (
+      <tr>
+        <td>loading...</td>
+      </tr>
+    );
+  }
+
   return (
-    <tr key={item?._id}>
-      <td className="text-nowrap">John Doe</td>
-      <td>johndoe@example.com</td>
-      <td>
-        <span className="badge badge-soft badge-success text-xs">
-          Professional
-        </span>
+    <tr>
+      <td className="text-nowrap">{bioData?.name}</td>
+      <td>{bioData?._id}</td>
+      <td>{status}</td>
+      <td className="text-nowrap">
+        {status === "approved" ? bioData?.phoneNumber : "show after approve"}
       </td>
-      <td className="text-nowrap">March 1, 2024</td>
-      <td>hello</td>
-      <td>hello</td>
+      <td>{status === "approved" ? bioData?.email : "show after approve"}</td>
+      <td>
+        <button className="btn" onClick={() => hadleDelete(_id)}>
+          Delete
+        </button>
+      </td>
     </tr>
   );
 }
