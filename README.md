@@ -19,8 +19,8 @@ Welcome to the **Matrimony Platform**, a modern matchmaking web application buil
 ---
 
 ## 🚀 Live Demo
-🔗 **Frontend Live Site**: [Click here](#)  
-🔗 **Backend API**: [Click here](#)  
+🔗 **Frontend Live Site**: [Click here](https://warmify-4879b.web.app/)  
+🔗 **Backend API**: [Click here](https://pair-up-server.vercel.app/)  
 
 ---
 
@@ -176,11 +176,11 @@ Contributions are welcome! To contribute:
 ---
 
 ## 📜 License
-This project is licensed under the **MIT License**.
+This project is licensed under the **PairUp**.
 
 ---
 
-Made with ❤️ by [Your Name](https://github.com/your-username)
+Made with ❤️ by [Your Name](https://github.com/MUKTADIR-ALAM)
 ```
 
 This `README.md` includes:
