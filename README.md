@@ -180,7 +180,7 @@ This project is licensed under the **PairUp**.
 
 ---
 
-Made with ❤️ by [Your Name](https://github.com/MUKTADIR-ALAM)
+Made with ❤️ by Muktadir Alam
 ```
 
 This `README.md` includes:
