@@ -71,7 +71,7 @@ Welcome to the **Matrimony Platform**, a modern matchmaking web application buil
 
 1️⃣ Clone this repository  
 ```sh
-git clone https://github.com/your-username/matrimony-platform.git
+git clone https://github.com/MUKTADIR-ALAM/b10a12-client-side.git
 cd matrimony-platform
 ```
 
