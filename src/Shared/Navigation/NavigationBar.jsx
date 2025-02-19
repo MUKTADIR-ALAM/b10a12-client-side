@@ -9,6 +9,17 @@ export default function NavigationBar() {
   const { user, logOut } = useAuth();
   const [isAdmin] = useAdmin();
 
+  const [darkmode, setdarkmode] = useState();
+  const setDarkMode = () => {
+    document.querySelector("html").setAttribute("data-theme", "light");
+  };
+  const setLightMode = () => {
+    document.querySelector("html").setAttribute("data-theme", "dark");
+  };
+  const toggleTheme = (e) => {
+    if (e.target.checked) setDarkMode();
+    else setLightMode();
+  };
   
   const links = (
     <>
@@ -126,15 +137,17 @@ export default function NavigationBar() {
               </ul>
             </div>
             <button onClick={logOut} className="btn">logout</button>
+            <input onClick={toggleTheme} type="checkbox" className="toggle" />
           </div>
         ) : (
-          <div className="flex md:order-2 gap-2">
+          <div className="flex md:order-2 gap-2 ">
             <Link to={"/signup"}>
               <button className="btn btn-primary">SignUp</button>
             </Link>
             <Link to={"/login"}>
               <button className="btn btn-primary">login</button>
             </Link>
+            <input onClick={toggleTheme} type="checkbox" className="toggle" />
           </div>
         )}
       </div>
