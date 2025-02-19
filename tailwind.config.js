@@ -7,6 +7,7 @@ export default {
   },
   plugins: [
     require('flyonui'),
-    require('flyonui/plugin')
+    require('flyonui/plugin'),
+    require('daisyui'),
   ],
 };

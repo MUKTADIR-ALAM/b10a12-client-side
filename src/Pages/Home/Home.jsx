@@ -5,6 +5,7 @@ import HowItWorks from '../../components/How it works/HowItWorks'
 import PremiumCard from './PremiumCard'
 import SuccessCounter from './SuccessCounter'
 import SuccessStory from './SuccessStory'
+import Accordion from '../../components/Accordion'
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <HowItWorks/>
       <SuccessCounter/>
       <SuccessStory/>
+      <Accordion/>
     </div>
   )
 }

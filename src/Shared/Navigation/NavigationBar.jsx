@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAdmin from "../../Hooks/useAdmin";
 import { IoHeartHalfOutline } from "react-icons/io5";
+import { useState } from "react";
 
 
 export default function NavigationBar() {
   const { user, logOut } = useAuth();
   const [isAdmin] = useAdmin();
+
   
   const links = (
     <>
@@ -128,10 +130,10 @@ export default function NavigationBar() {
         ) : (
           <div className="flex md:order-2 gap-2">
             <Link to={"/signup"}>
-              <button className="btn btn-accent">SignUp</button>
+              <button className="btn btn-primary">SignUp</button>
             </Link>
             <Link to={"/login"}>
-              <button className="btn btn-accent">login</button>
+              <button className="btn btn-primary">login</button>
             </Link>
           </div>
         )}
