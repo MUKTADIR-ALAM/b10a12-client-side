@@ -140,7 +140,7 @@ export default function NavigationBar() {
             <input onClick={toggleTheme} type="checkbox" className="toggle" />
           </div>
         ) : (
-          <div className="flex md:order-2 gap-2 ">
+          <div className="flex md:order-2 gap-2 justify-center items-center">
             <Link to={"/signup"}>
               <button className="btn btn-primary">SignUp</button>
             </Link>
