@@ -35,7 +35,7 @@ export default function NavigationBar() {
     </>
   );
   return (
-    <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 shadow">
+    <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 shadow sticky top-0 z-50 px-13">
       <div className="navbar-start max-md:w-1/4">
         <a
           className="flex items-center link text-base-content link-neutral text-xl font-semibold no-underline"
