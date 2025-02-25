@@ -43,7 +43,7 @@ export default function NavigationBar() {
         <a href="#footer">About Us</a>
       </li>
       <li>
-        <a href="#footer">Contact Us</a>
+        <Link to={"/contactUs"}>Contact Us</Link>
       </li>
     </>
   );

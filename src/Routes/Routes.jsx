@@ -19,6 +19,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import GotMarried from "../Pages/Dashboard/Users/GotMarried/GotMarried";
 import AdminRoute from "./AdminRoute";
+import ContactUs from "../Pages/ContactUs";
 
 export const Routes = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ export const Routes = createBrowserRouter([
       {
         path: "signup",
         element: <Signup />,
+      },
+      {
+        path:'/contactUs',
+        element: <ContactUs/>
       },
       {
         path: "biodatas",

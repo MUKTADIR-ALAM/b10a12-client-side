@@ -3,7 +3,7 @@ import { IoHeartHalfOutline } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <div id="footer" className="bg-gray-100">
+    <div id="footer" className="bg-gray-100 dark:bg-gray-400">
       <div className="max-w-screen-lg px-4 sm:px-6 text-gray-800 sm:grid md:grid-cols-4 sm:grid-cols-2 mx-auto">
         <div className="p-5">
           <h3 className="font-bold text-xl text-indigo-600">Pair Up</h3>
@@ -46,7 +46,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <div className="bg-gray-100 pt-2">
+      <div className="bg-gray-100 dark:bg-gray-400 pt-2">
         <div className="flex pb-5 px-3 m-auto pt-5 border-t text-gray-800 text-sm flex-col max-w-screen-lg items-center">
           
           <div className="my-5">© Copyright 2020. All Rights Reserved by PairUp</div>
